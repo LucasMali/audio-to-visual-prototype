@@ -4,6 +4,9 @@
 
 An audio-reactive video generator that renders GPU-accelerated visuals (rings, particles, glowing dot) synchronized to an audio file, then encodes the result as an MP4.
 
+## Example
+[![TikTok Preview](tiktok-preview.gif)](https://www.tiktok.com/@opulentiapro/video/7624168285461892366)
+
 ## How It Works
 
 1. Audio is analyzed using `librosa` (FFT, hop frames at target FPS)
