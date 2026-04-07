@@ -1,0 +1,72 @@
+# ─── Audio Visualizer Settings ───────────────────────────────────────────────
+# Edit this file to customize the visual effect. Re-run render.py to apply.
+
+# ─── Output ──────────────────────────────────────────────────────────────────
+output:
+  width: 1080
+  height: 1920
+  fps: 30
+  background_color: [0.01, 0.01, 0.02, 1.0]   # RGBA, 0.0-1.0
+
+# ─── Audio Analysis ──────────────────────────────────────────────────────────
+audio:
+  sample_rate: 44100
+  fft_size: 2048
+  hop_length: 512
+
+# ─── Dot (the "speaker" character) ──────────────────────────────────────────
+dot:
+  color: [0.3, 0.8, 1.0]             # RGB — core dot color
+  color_bright: [1.0, 1.0, 1.0]      # RGB — hot center when speaking
+  radius: 0.06                        # Idle dot size (0.0-0.3 of screen)
+  glow_size: 0.12                     # Soft glow radius around the dot
+  base_brightness: 0.5                # Idle glow brightness
+  active_brightness: 4.0              # How bright dot gets when speaking
+
+  # Wandering movement — playful Pixar-style path
+  move_speed: 0.45                    # How fast the dot drifts (0.0-1.0)
+  move_radius: 0.04                   # How far from center it wanders (0.0-0.4)
+
+# ─── Ripple Waves (expanding concentric rings from the dot) ──────────────────
+ripples:
+  count: 8.0                          # Number of concurrent ripple wavefronts
+  speed: 0.6                          # Expansion speed
+  width: 0.006                        # Ripple line thickness
+  base_alpha: 0.04                    # Faint idle ripple visibility
+  active_alpha: 0.6                   # Ripple brightness when speaking
+  max_radius: 0.45                    # How far ripples travel
+
+# ─── Atmosphere (wide volumetric glow around the dot) ─────────────────────────
+atmosphere:
+  radius: 0.5                         # Atmospheric haze spread
+  intensity: 0.15                     # Overall atmospheric brightness
+
+# ─── Color Palette ───────────────────────────────────────────────────────────
+palette:
+  blue:   [0.15, 0.4, 1.0]           # Deep blue for ripples/glow
+  purple: [0.55, 0.2, 0.9]           # Purple for outer effects
+  cyan:   [0.3, 0.85, 1.0]           # Bright cyan for highlights
+
+# ─── Particles (orbit the dot) ──────────────────────────────────────────────
+particles:
+  count: 800
+  color: [0.5, 0.8, 1.0]             # RGB
+  size_idle: 3.0                      # Point size when quiet
+  size_active: 14.0                   # Extra point size at full energy
+  alpha_idle: 0.6                     # Base visibility
+  glow_idle: 1.0                      # Idle color multiplier
+  glow_active: 4.0                    # Color multiplier at full energy
+  reactivity: 0.5                     # Energy scaling factor
+  spread: 0.5                         # Initial position spread (not used for orbit)
+
+# ─── Captions (word-by-word animated subtitles) ──────────────────────────────
+captions:
+  enabled: true                       # Set to false to disable captions
+  model: "base"                       # Whisper model: tiny, base, small, medium, large-v3
+  font_size: 64                       # Caption text size in pixels
+  y_position: 0.78                    # Vertical position (0.0=top, 1.0=bottom)
+  window_size: 6                      # Max words shown at once
+  glow_radius: 8                      # Glow blur radius around text
+  text_color: [255, 255, 255, 255]    # RGBA — default word color
+  highlight_color: [120, 200, 255, 255]  # RGBA — currently-spoken word
+  glow_color: [80, 160, 255, 180]     # RGBA — glow behind words
